@@ -1,0 +1,58 @@
+
+<form id= "question" action='/answers' accept-charset="utf-8" data-remote = "true" method="post">
+
+	<% while @number < @question.length %>
+	<p>
+		<%= @question.find("#{@number}").question %>
+		<div>
+			<p>
+				<label>
+					<input type="checkbox" value = "<%= @question.find("#{@number}").A %>">
+					<%= @question.find("#{@number}").A %>
+				</label>
+			</p> 
+			<p>
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" value = "<%= @question.find("#{@number}").B %>"> 
+						<%= @question.find("#{@number}").B %>
+					</label>
+				</div> 
+			</p> 
+			<p>
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" value = "<%= @question.find("#{@number}").C %>">
+						<%= @question.find("#{@number}").C %>
+					</label>
+				</div> 
+			</p> 
+			<p>
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" value = "<%= @question.find("#{@number}").D %>"> 
+						<%= @question.find("#{@number}").D %>
+					</label>
+				</div> 
+			</p> 	
+		</div>
+		<% @number += 1 %>
+		<% end %>
+		<a href = "/question/<%= @number %>" ><button onclick= "next()" type="submit"> suivant </button></a>
+	</form>
+
+
+
+	<script type="text/javascript">
+
+		function next(){
+			var inputs = document.getElementsByTagName("input");
+			for (var i = 0; i < inputs.length; i++) {
+				if (inputs[i].type == 'checkbox' && inputs[i].checked)
+				{
+					alert("votre reponse est:  " + inputs[i].value)
+					console.log(inputs[i].value)
+				}
+			}
+		}
+	</script>
